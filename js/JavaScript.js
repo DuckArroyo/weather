@@ -39,6 +39,9 @@ var getByZip = function () {
 };
 console.log(getByZip);
 
+//! addClass(".hide"); // class to hide elements
+
+
 //! Available parameters
 // *lat, lon	required	Geographical coordinates (latitude, longitude)
 // *appid	required	Your unique API key (you can always find it on your account page under the "API key" tab)
