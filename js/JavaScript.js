@@ -1,10 +1,12 @@
-//!https://openweathermap.org/api
-//One call API https://openweathermap.org/api/one-call-api
+//https://openweathermap.org/api
 // 5 day weather docs https://openweathermap.org/forecast5
-
 var apiKey = "af8d552e7c5f4110dc63b9ba4e35ef63";
 
-//Api call https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+var cityEl = document.querySelector("#city");
+var stateEl = document.querySelector("#state");
+var zipCodeEl = document.querySelector("#zipCode");
+
+userFormEl.addEventListener("click", getWeather);
 
 //call 5 day By city
 var getWeather = function () {
@@ -14,8 +16,9 @@ var getWeather = function () {
     return lat.json();
   });
 };
-console.log(getWeather);
+console.log(lat);
 
+//call by coords
 var getMoreWeather = function () {
   fetch(
     "https://api.openweathermap.org/data/2.5/onecall?lat=44.068404274656245&lon=-123.03870966434789&appid=" +
@@ -23,6 +26,10 @@ var getMoreWeather = function () {
   );
   console.log(fetch);
 };
+
+// call by zip code
+
+api.openweathermap.org/data/2.5/forecast?zip={zip code},{country code}&appid=apiKey
 
 //! Available parameters
 // *lat, lon	required	Geographical coordinates (latitude, longitude)
@@ -34,6 +41,5 @@ var getMoreWeather = function () {
 //     hourly
 //     daily
 //     alerts
-
 // units optional Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more
 // lang optional You can use the lang parameter to get the output in your language. Learn more
