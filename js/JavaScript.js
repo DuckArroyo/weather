@@ -1,35 +1,43 @@
 //https://openweathermap.org/api
 // 5 day weather docs https://openweathermap.org/forecast5
 var apiKey = "af8d552e7c5f4110dc63b9ba4e35ef63";
-
 var cityEl = document.querySelector("#city");
 var stateEl = document.querySelector("#state");
 var zipCodeEl = document.querySelector("#zipCode");
+    
+var searchCityUrl = "api.openweathermap.org/data/2.5/forecast?q=Eugene,OR&appid="+apiKey;
+var searchZipUrl = "api.openweathermap.org/data/2.5/forecast?zip=zipCodeEl,us&appid=" + apiKey
 
 userFormEl.addEventListener("click", getWeather);
 
+//id=submit-city
+//id=submit-state
+//id=submit-zip
+
 //call 5 day By city
 var getWeather = function () {
-  fetch(
-    "api.openweathermap.org/data/2.5/forecast?q=Eugene,OR&appid=" + apiKey
-  ).then(function (lat) {
-    return lat.json();
+  
+  fetch(searchCityUrl)
+  .then(response => response.json())
+  .then(data => {
+    // do stuff with the data;
   });
+  .catch(() => {
+    msg.textContent = "Please search for a valid city 😩";
 };
-console.log(lat);
-
-//call by coords
-var getMoreWeather = function () {
-  fetch(
-    "https://api.openweathermap.org/data/2.5/onecall?lat=44.068404274656245&lon=-123.03870966434789&appid=" +
-      apiKey
-  );
-  console.log(fetch);
-};
+console.log(getWeather);
 
 // call by zip code
-
-api.openweathermap.org/data/2.5/forecast?zip={zip code},{country code}&appid=apiKey
+var getByZip = function () {
+  fetch(searchZipUrl);
+  .then(response => response.json())
+  .then(data => {
+    // do stuff with the data;
+  });
+  .catch(() => {
+    msg.textContent = "Please search for a valid city 😩";
+};
+console.log(getByZip);
 
 //! Available parameters
 // *lat, lon	required	Geographical coordinates (latitude, longitude)
