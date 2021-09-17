@@ -1,3 +1,19 @@
+//Option 1 user types city or zip code
+//query goes
+//fetch gets result
+//then gets data and json's
+//
+
+//option 2 user types "favorites"
+//java creates a button that is stored into local storage for persistence
+//on click
+// button clears display
+//fetch is created for "favorite" click
+
+//button to clear favorites and current display
+
+//create 3 default buttons for hard coded
+
 function myFunction() {
   fetch(
     // Make a fetch request to Wikipedia to get a random article title

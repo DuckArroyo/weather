@@ -56,32 +56,22 @@
           </form> 
           
             <button id="Place-holder" class="btn btn-block btn-js hide"></button>
+            <button class="btn btn-block btn-add" onclick="getLa()">Los Angeles Weather!</button>
+            <button class="btn btn-block btn-add" onclick="getChi()">New York Weather!</button>
+            <button class="btn btn-block btn-add" onclick="getTokyo()">Tokyo Weather!</button>
        
       </header>
       <main class="col-12 col-lg-9 d-flex flex-column ">
         <div class="m-5 row justify-content-around">
             <!--  -->
-            <div class="card hide" style="width: 18rem;">
-              <img class="card-img-top" src="..." alt="Card image cap">
-              <div class="card-body">
+            <div id="response-container" class="card-body card hide" style="width: 18rem;">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up the bulk of the card's content.
                 </p>
-              </div>
-            </div>
-            <!--insert more cards below if needed  -->
-            <div class="card hide" style="width: 18rem;">
-              <img class="card-img-top" src="..." alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
-              </div>
             </div>
         </div>
-      
+            <!--insert more cards below if needed  -->  
       </main>
     </div>
 

@@ -4,53 +4,93 @@ var apiKey = "af8d552e7c5f4110dc63b9ba4e35ef63";
 var cityEl = document.querySelector("#city");
 var stateEl = document.querySelector("#state");
 var zipCodeEl = document.querySelector("#zipCode");
-    
-var searchCityUrl = "api.openweathermap.org/data/2.5/forecast?q=Eugene,OR&appid="+apiKey;
-var searchZipUrl = "api.openweathermap.org/data/2.5/forecast?zip=zipCodeEl,us&appid=" + apiKey
 
-userFormEl.addEventListener("click", getWeather);
+var searchCityUrl =
+  "https://api.openweathermap.org/data/2.5/forecast?q=Portland&appid=af8d552e7c5f4110dc63b9ba4e35ef63";
+//replace "api.openweathermap.org/data/2.5/forecast?q="cityEl"&appid="+apiKey;
+
+var searchZipUrl =
+  "https://api.openweathermap.org/data/2.5/forecast?zip=97403&appid=af8d552e7c5f4110dc63b9ba4e35ef63";
+//replace with these "api.openweathermap.org/data/2.5/forecast?zip="zipCodeEl"&appid="+apiKey
+
+//!City
+//"api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey
+//!Zip works
+//"api.openweathermap.org/data/2.5/forecast?zip=" + zipCodeEl + "&appid=" + apiKey
+
+//userFormEl.addEventListener("click", getWeather);
 
 //id=submit-city
 //id=submit-state
 //id=submit-zip
 
+function getLa() {
+  fetch("https://api.openweathermap.org/data/2.5/forecast?q=los%20angeles&appid=af8d552e7c5f4110dc63b9ba4e35ef63")
+.then(response.json(response));
+.then(console.log(data));
+if(response.cod === 200) {
+  console.log(city.name.text);
+  //! code the remove class hide element.remove.class("hide");
+  var cityTitleEl = document.querySelector("#card-title");
+  cityTitleEl.innerHTML = '<h5>' + city.name.text + '</h5>';
+
+  var temperatureEl = 
+} 
+else {alert(city + " is not a valid city, please search for a valid city 😩");}
+
+}
+
+function getChi() {
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=chicago&appid=af8d552e7c5f4110dc63b9ba4e35ef63");
+
+}
+
+function get Tokyo(){
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=tokyo&appid=af8d552e7c5f4110dc63b9ba4e35ef63");
+
+}
+
 //call 5 day By city
 var getWeather = function () {
-  
-  fetch(searchCityUrl)
-  .then(response => response.json())
-  .then(data => {
-    // do stuff with the data;
+  fetch(searchCityUrl).then(function (response) {
+    if (response.ok) {
+      response.json(function (data) {
+        console.log(response, data);
+        printWeather(data, city);
+      });
+    } else {
+      alert(city + " is not a valid city, please search for a valid city 😩");
+    }
   });
-  .catch(() => {
-    msg.textContent = "Please search for a valid city 😩";
 };
-console.log(getWeather);
+getWeather();
 
 // call by zip code
 var getByZip = function () {
-  fetch(searchZipUrl);
-  .then(response => response.json())
-  .then(data => {
-    // do stuff with the data;
-  });
-  .catch(() => {
-    msg.textContent = "Please search for a valid city 😩";
+  fetch(searchZipUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+var responseContainerEl = document.querySelector("#response-container");
+responseContainerEl.appendChild()
+      printWeather(city);
+    });
+
+  // if (response) {
+  //   console.log(data);
+  //   printWeather();
+  // } else {
+  //   alert(
+  //     zipCode + " is not a valid zip code, please search for a valid city 😩"
+  //   );
+  // }
 };
-console.log(getByZip);
+getByZip();
+
+var printWeather = function () {
+  console.log("printWeather triggered");
+};
+//printWeather();
 
 //! addClass(".hide"); // class to hide elements
-
-
-//! Available parameters
-// *lat, lon	required	Geographical coordinates (latitude, longitude)
-// *appid	required	Your unique API key (you can always find it on your account page under the "API key" tab)
-// *exclude	optional	By using this parameter you can exclude some parts of the weather data from the API response. It should be a comma-delimited list (without spaces).
-// Available values:
-//     current
-//     minutely
-//     hourly
-//     daily
-//     alerts
-// units optional Units of measurement. standard, metric and imperial units are available. If you do not use the units parameter, standard units will be applied by default. Learn more
-// lang optional You can use the lang parameter to get the output in your language. Learn more
