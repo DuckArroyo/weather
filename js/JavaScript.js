@@ -90,7 +90,6 @@ getByZip();
 
 var printWeather = function () {
   console.log("printWeather triggered");
+  //! addClass(".hide"); // class to hide element
 };
 //printWeather();
-
-//! addClass(".hide"); // class to hide elements
