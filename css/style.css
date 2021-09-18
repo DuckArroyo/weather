@@ -12,6 +12,12 @@ h2 {
   color: #61892f;
 }
 
+.card {
+  padding: 5px;
+  margin: 10px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
 /* header {min-width: 350px;} */
 
 /* Size limiter */
@@ -24,7 +30,7 @@ h2 {
 .btn {
   font-size: 24px;
   font-weight: 500;
-  min-width: 320px;
+  min-width: 250px;
   max-width: 900px; /*limiting the button or it looks weird*/
 }
 
