@@ -1,9 +1,8 @@
 //https://openweathermap.org/api
 // 5 day weather docs https://openweathermap.org/forecast5
 var apiKey = "af8d552e7c5f4110dc63b9ba4e35ef63";
-var cityEl = document.querySelector("#city");
-var zipCodeEl = document.querySelector("#zipCode");
-var favoriteEl = document.querySelector("#favorite");
+var cityEl = document.querySelector("#submit-city");
+var zipCodeEl = document.querySelector("#submit-zip");
 var responseContainerEl = document.querySelector("#response-container");
 
 var getLosAngeles =
@@ -28,39 +27,51 @@ var searchZipUrl =
   apiKey;
 
 //!call 5 day By city
-cityEl.addEventListener("submit-city", function () {
-  //I believe this can be rewritten as getWeather() {
-  var getWeather = function () {
-    fetch(searchCityUrl) //currently the name of data is what I told the app that the curlies are named {} name can be used multiple times.
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data); //this is where the data is actually in.
-        if (data.cod === 200) {
-          // City name
-          var cityName = data.name.city; //write variables for each item that need to be displayed
-          var cityNameEl = document.createElement("h2");
-          cityNameEl.textContent = cityName;
-          responseContainerEl.appendChild(cityNameEl);
-          //loop for data array
-          console.log(data.name.city);
-          //Temperature
-        } else {
-          alert(
-            city + " is not a valid city, please search for a valid city 😩"
-          );
-        }
-      });
-  };
-});
-//getWeather();
+//cityEl.addEventListener("submit-city", function () {
+//I believe this can be rewritten as getWeather() {
+var getWeather = function () {
+  fetch(searchCityUrl) //currently the name of data is what I told the app that the curlies are named {} name can be used multiple times.
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data); //this is where the data is actually in.
+      if (data.cod === 200) {
+        // City name
+        var cityName = data.name.city; //write variables for each item that need to be displayed
+        var cityNameEl = document.createElement("h2");
+        cityNameEl.textContent = cityName;
+        responseContainerEl.appendChild(cityNameEl);
+        //loop for data array
+        console.log(data.name.city);
 
-//! call by zip code
-// var getByZip = function () {
-//   fetch(searchZipUrl)
+        //! replicate the loop from LA in here for the 5 day forecast/create
+        //within the loop
+        //create a div for each day
+        //take dt and moment it into day of the week and date
+        //temperature
+        //description
+        //icon
+        //append all into the div
+      } else {
+        alert(city + " is not a valid city, please search for a valid city 😩");
+      }
+    });
+};
+//});
+//getWeather(); //not used becasue it is triggered by the event listener
 
-// };
-// getByZip();
+//! call by zip code - waiting on the code from city to adapt
+var getByZip = function () {
+  fetch(searchZipUrl);
+  console
+    .log("triggered")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+};
+// getByZip();//not used becasue it is triggered by the event listener
 
+//!these work but the reset function needs to be edited
 function getLa() {
   reset();
   fetch(getLosAngeles) //currently the name of data is what I told the app that the curlies are named {} name can be used multiple times.
@@ -83,6 +94,7 @@ function getLa() {
         temperatureEl.textContent = temperature;
         responseContainerEl.appendChild(temperatureEl);
         console.log(data.main.temp);
+        //!HELP - for loop or find function?
         //find
         // find(weather, [0], description) return description
         // console.log(description);
@@ -161,12 +173,11 @@ function getTokyo() {
     });
 }
 
+//!reset function
 var reset = function () {
   responseContainerEl.textContent = "";
 };
 
-// var printWeather = function () {
-//   console.log("printWeather triggered");
-//   //! addClass(".hide"); // class to hide element
-// };
-//printWeather();
+cityEl.addEventListener("#submit-city", getWeather);
+
+zipCodeEl.addEventListener("#submit-zip", getByZip);
