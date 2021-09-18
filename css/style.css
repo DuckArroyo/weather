@@ -8,13 +8,18 @@ h1 {
   font-size: 72px;
 }
 
+h2 {
+  color: #61892f;
+}
+
 /* header {min-width: 350px;} */
 
 /* Size limiter */
-.card {
+#response-container {
+  background-color: #222629;
+  color: #6b6e70;
   max-width: 900px;
 }
-
 /* !ask about changing parent relationship making entry fields flexible*/
 .btn {
   font-size: 24px;
