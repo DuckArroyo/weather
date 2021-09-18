@@ -24,6 +24,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Staatliches&display=swap" rel="stylesheet">
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css"/>
     <!--End imported styles-->
 
@@ -39,36 +42,32 @@
     <div class="row min-vh-100 no-gutters">
       <header class="col-12 col-lg-3 bg-dark text-light sticky-top d-flex flex-column p-4 p-lg-3">
           <form id="user-form">
+<!-- City Search -->
             <label for="city">Search for a city:</label><br>
-            <input type="text" id="city" name="city" value="City"><br>
-          
+            <input type="text" id="city" name="city" value="City" class="frozen"><br>
             <input id="submit-city" class="btn btn-block btn-add" type="submit" value="Submit">
-
-            <label for="state">State:</label><br>
-            <input type="text" id="state" name="state" value="State"><br><br>
-         
-            <input id="submit-state" class="btn btn-block btn-add" type="submit" value="Submit">
-            
+<!--ZipCode Search  -->
             <label for="zipCode">Zip Code:</label><br>
-            <input type="text" id="zipCode" name="zipCode" value="Zip code"><br><br>
-            
+            <input type="text" id="zipCode" name="zipCode" value="Zip code" class="frozen"><br><br>
             <input id="submit-zip" class="btn btn-block btn-add" type="submit" value="Submit">
+<!--Add your favorite-->
+            <label for="favorite">Add your favorite location:</label><br>
+            <input type="text" id="favorite" name="favorite" value="Comming soon" class="frozen"><br><br>
+            <input id="submit-favorite" class="btn btn-block btn-add" type="submit" value="Submit">
           </form> 
           
             <button id="Place-holder" class="btn btn-block btn-js hide"></button>
-            <button class="btn btn-block btn-add" onclick="getLa()">Los Angeles Weather!</button>
-            <button class="btn btn-block btn-add" onclick="getChi()">New York Weather!</button>
-            <button class="btn btn-block btn-add" onclick="getTokyo()">Tokyo Weather!</button>
+            <button class="btn btn-block btn-add" onclick="getLa()">Current Los Angeles Weather!</button>
+            <button class="btn btn-block btn-add" onclick="getChi()">Current Chicago Weather!</button>
+            <button class="btn btn-block btn-add" onclick="getTokyo()">Current Tokyo Weather!</button>
        
       </header>
       <main class="col-12 col-lg-9 d-flex flex-column ">
         <div class="m-5 row justify-content-around">
             <!--readd hide  -->
             <div id="response-container" class="card-body card " style="width: 18rem;">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
+                <h2 class="card-title">Card title</h2>
+                <p class="card-text">Sample</p>
             </div>
         </div>
             <!--insert more cards below if needed  -->  
