@@ -186,7 +186,7 @@ var makeCard = function (weather) {
   var day = moment(weather.dt_txt).format("dddd");
   var dayEl = document.createElement("p");
   dayEl.textContent = day;
-  card.appendChild(dayEl);
+  //card.appendChild(dayEl);
   var date = moment(weather.dt_txt).format("MMM Do YY");
   console.log(date);
   for (var i = 0; i <= weather.weather.length; i++) {
@@ -194,6 +194,7 @@ var makeCard = function (weather) {
     var ww = weather.weather.description;
     console.log(ww);
   }
+  //!create a variable to hold teh array. Then create a second variable with the index item. See 3w and GitItDone
 
   //within the loop
   //create a div for each day
