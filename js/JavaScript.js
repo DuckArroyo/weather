@@ -27,7 +27,7 @@ var getWeather = function (event) {
   fetch(searchCityUrl) //currently the name of data is what I told the app that the curlies are named {} name can be used multiple times.
     .then((response) => response.json())
     .then((data) => {
-      console.log(data); //this is where the data is actually in.
+      //console.log(data); //this is where the data is actually in.
       if (data.cod == 200) {
         responseContainerEl.classList.toggle("hide");
         var card = document.createElement("div");
@@ -181,9 +181,12 @@ function getTokyo() {
 }
 
 var makeCard = function (weather) {
+  console.log(weather);
   console.log(weather.weather);
   var day = moment(weather.dt_txt).format("dddd");
-  console.log(day);
+  var dayEl = document.createElement("p");
+  dayEl.textContent = day;
+  card.appendChild(dayEl);
   var date = moment(weather.dt_txt).format("MMM Do YY");
   console.log(date);
   for (var i = 0; i <= weather.weather.length; i++) {
@@ -202,6 +205,7 @@ var makeCard = function (weather) {
 };
 
 //!reset function
+$();
 var reset = function () {
   //$(responseContainerEl).remove(card);
   responseContainerEl.innerHTML = "";
