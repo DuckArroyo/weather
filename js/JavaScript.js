@@ -27,7 +27,7 @@ var getWeather = function (event) {
   fetch(searchCityUrl) //currently the name of data is what I told the app that the curlies are named {} name can be used multiple times.
     .then((response) => response.json())
     .then((data) => {
-      //console.log(data); //this is where the data is actually in.
+      console.log(data); //this is where the data is actually in.
       if (data.cod == 200) {
         responseContainerEl.classList.toggle("hide");
         var card = document.createElement("div");
@@ -62,8 +62,24 @@ var getByZip = function (event) {
     userZip +
     "&units=imperial&appid=" +
     apiKey;
+  fetch(searchZipUrl) //currently the name of data is what I told the app that the curlies are named {} name can be used multiple times.
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data); //this is where the data is actually in.
+      if (data.cod == 200) {
+        console.log("Success");
+      } else {
+        alert(
+          userZip +
+            " is not a valid zip code, please search for a valid city 😩"
+        );
+      }
+    });
 
-  console.log(searchZipUrl);
+  //loop for data array
+  // for (var i = 0; i < 5; i++) {
+  //   makeCard(data.list[i]);
+  // }
 };
 // getByZip();//not used because it is triggered by the event listener
 
@@ -93,6 +109,10 @@ function getLa() {
         temperatureEl.textContent = temperature;
         card.appendChild(temperatureEl);
         console.log(data.main.temp);
+
+        for (var i = 0; i < 5; i++) {
+          makeCard(data.weather[i]);
+        }
         //!HELP - for loop or find function?
         //find
         // find(weather, [0], description) return description
@@ -143,6 +163,10 @@ function getChi() {
         temperatureEl.textContent = temperature;
         card.appendChild(temperatureEl);
         console.log(data.main.temp);
+
+        for (var i = 0; i < 5; i++) {
+          makeCard(data.weather[i]);
+        }
       } else {
         alert("Error 😩");
       }
@@ -174,6 +198,10 @@ function getTokyo() {
         temperatureEl.textContent = temperature;
         card.appendChild(temperatureEl);
         console.log(data.main.temp);
+
+        for (var i = 0; i < 5; i++) {
+          makeCard(data.list[i]);
+        }
       } else {
         alert("Error 😩");
       }
@@ -182,20 +210,26 @@ function getTokyo() {
 
 var makeCard = function (weather) {
   console.log(weather);
-  console.log(weather.weather);
+  //console.log(weather.weather); console log for user searching city
+  //!These dates need to be moved to make card function - here as proof of concept.
   var day = moment(weather.dt_txt).format("dddd");
   var dayEl = document.createElement("p");
   dayEl.textContent = day;
   //card.appendChild(dayEl);
   var date = moment(weather.dt_txt).format("MMM Do YY");
+  var dateEl = document.createElement("p");
+  dateEl.textContent = date;
+  //card.appendChild(dateEl);
   console.log(date);
-  for (var i = 0; i <= weather.weather.length; i++) {
-    console.log(weather.weather[i]);
-    var ww = weather.weather.description;
-    console.log(ww);
-  }
-  //!create a variable to hold teh array. Then create a second variable with the index item. See 3w and GitItDone
+  // for (var i = 0; i <= weather.weather.length; i++) {
+  //   console.log(weather.weather[i]);
+  //   var ww = weather.weather.description;
+  //   console.log(ww);
+  // }
 
+  //Create inner card and append items to the card
+
+  //!create a variable to hold teh array. Then create a second variable with the index item. See 3w and GitItDone
   //within the loop
   //create a div for each day
   //take dt and moment it into day of the week and date
@@ -205,8 +239,6 @@ var makeCard = function (weather) {
   //append all into the div
 };
 
-//!reset function
-$();
 var reset = function () {
   //$(responseContainerEl).remove(card);
   responseContainerEl.innerHTML = "";
