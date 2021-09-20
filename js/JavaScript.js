@@ -1,5 +1,3 @@
-//https://openweathermap.org/api
-// 5 day weather docs https://openweathermap.org/forecast5
 var apiKey = "af8d552e7c5f4110dc63b9ba4e35ef63";
 var cityEl = document.querySelector("#submit-city");
 var zipCodeEl = document.querySelector("#submit-zip");
@@ -27,7 +25,7 @@ var getWeather = function (event) {
   fetch(searchCityUrl) //currently the name of data is what I told the app that the curlies are named {} name can be used multiple times.
     .then((response) => response.json())
     .then((data) => {
-      //console.log(data); //this is where the data is actually in.
+      console.log(data); //this is where the data is actually in.
       if (data.cod == 200) {
         responseContainerEl.classList.toggle("hide");
         var card = document.createElement("div");
@@ -49,9 +47,45 @@ var getWeather = function (event) {
       }
     });
 };
-
 //getWeather(); //not used becasue it is triggered by the event listener
 
+var makeCard = function (weather) {
+  // var dayCard = document.createElement("div");
+  // dayCard.setAttribute("id", "inside-card");
+  // dayCard.setAttribute("class", "card");
+  // card.appendChild(dayCard);
+
+  //console.log(weather);
+  console.log(weather.weather);
+
+  //day of the week
+  var day = moment(weather.dt_txt).format("dddd");
+  var dayEl = document.createElement("p");
+  dayEl.textContent = day;
+  //dayCard.appendChild(dayEl);
+  //console.log(dayEl);
+  //date
+  var date = moment(weather.dt_txt).format("MMM Do YY");
+  var dateEl = document.createElement("p");
+  dateEl.textContent = date;
+  //dayCard.appendChild(dateEl);
+  //console.log(dateEl);
+
+  for (var i = 0; i <= descrip.length; i++) {
+    description = descrip[0];
+    console.log(description);
+
+    icon = descrip[1];
+    console.log(icon);
+  }
+  //within the loop
+  //create a div for each day
+  //take dt and moment it into day of the week and date
+  //temperature
+  //description
+  //icon
+  //append all into the div
+};
 //! call by zip code - waiting on the code from city to adapt
 var getByZip = function (event) {
   event.preventDefault();
@@ -69,7 +103,7 @@ var getByZip = function (event) {
 
 //!these work but the reset function needs to be edited
 function getLa() {
-  fetch(getLosAngeles) //currently the name of data is what I told the app that the curlies are named {} name can be used multiple times.
+  fetch(getLosAngeles)
     .then((response) => response.json())
     .then((data) => {
       console.log(data); //this is where the data is actually in.
@@ -93,25 +127,6 @@ function getLa() {
         temperatureEl.textContent = temperature;
         card.appendChild(temperatureEl);
         console.log(data.main.temp);
-        //!HELP - for loop or find function?
-        //find
-        // find(weather, [0], description) return description
-        // console.log(description);
-        //for loop to collect "Weather"
-        //   var main = for (i = 0; i < weather.length; i++) {
-        //   //description
-        //   var weather = data.weather.description; //write variables for each item that need to be displayed
-        //   var weatherEl = document.createElement("p");
-        //   weatherEl.textContent = weather;
-        //   responseContainerEl.appendChild(weatherEl);
-        //   console.log(data.weather.description);
-        //   //icon
-        //   var icon = data.weather.icon;
-        //   var iconEl = document.createElement("div");
-        //   iconEl.img = icon;
-        //   responseContainerEl.appendChild(iconEl);
-        //   console.log(data.weather.icon);
-        // }
       } else {
         alert("Error😩");
       }
@@ -179,30 +194,6 @@ function getTokyo() {
       }
     });
 }
-
-var makeCard = function (weather) {
-  console.log(weather);
-  console.log(weather.weather);
-  var day = moment(weather.dt_txt).format("dddd");
-  var dayEl = document.createElement("p");
-  dayEl.textContent = day;
-  card.appendChild(dayEl);
-  var date = moment(weather.dt_txt).format("MMM Do YY");
-  console.log(date);
-  for (var i = 0; i <= weather.weather.length; i++) {
-    console.log(weather.weather[i]);
-    var ww = weather.weather.description;
-    console.log(ww);
-  }
-
-  //within the loop
-  //create a div for each day
-  //take dt and moment it into day of the week and date
-  //temperature
-  //description
-  //icon
-  //append all into the div
-};
 
 //!reset function
 $();
