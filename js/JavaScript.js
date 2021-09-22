@@ -29,7 +29,7 @@ var getWeather = function (event) {
       if (data.cod == 200) {
         responseContainerEl.classList.toggle("hide");
         var card = document.createElement("div");
-        card.setAttribute("id", "weather-card");
+        card.setAttribute("id", "weathercard");
         card.setAttribute("class", "card");
         responseContainerEl.appendChild(card);
         // City name
@@ -39,8 +39,9 @@ var getWeather = function (event) {
         card.appendChild(cityNameEl);
         //loop for data array
 
-        for (var i = 0; i < 5; i++) {
-          makeCard(data.list[i]);
+        for (var i = 0; i < data.list.length; i++) {
+          if (data.list[i].dt_txt.indexOf("12:00:00") !== -1)
+            makeCard(data.list[i]);
         }
       } else {
         alert(city + " is not a valid city, please search for a valid city 😩");
@@ -49,43 +50,44 @@ var getWeather = function (event) {
 };
 //getWeather(); //not used becasue it is triggered by the event listener
 
-var makeCard = function (weather) {
-  // var dayCard = document.createElement("div");
-  // dayCard.setAttribute("id", "inside-card");
-  // dayCard.setAttribute("class", "card");
-  // card.appendChild(dayCard);
+//!What is this?
+// var makeCard = function (weather) {
+//   // var dayCard = document.createElement("div");
+//   // dayCard.setAttribute("id", "inside-card");
+//   // dayCard.setAttribute("class", "card");
+//   // card.appendChild(dayCard);
 
-  //console.log(weather);
-  console.log(weather.weather);
+//   //console.log(weather);
+//   console.log(weather.weather);
 
-  //day of the week
-  var day = moment(weather.dt_txt).format("dddd");
-  var dayEl = document.createElement("p");
-  dayEl.textContent = day;
-  //dayCard.appendChild(dayEl);
-  //console.log(dayEl);
-  //date
-  var date = moment(weather.dt_txt).format("MMM Do YY");
-  var dateEl = document.createElement("p");
-  dateEl.textContent = date;
-  //dayCard.appendChild(dateEl);
-  //console.log(dateEl);
+//   //day of the week
+//   var day = moment(weather.dt_txt).format("dddd");
+//   var dayEl = document.createElement("p");
+//   dayEl.textContent = day;
+//   //dayCard.appendChild(dayEl);
+//   //console.log(dayEl);
+//   //date
+//   var date = moment(weather.dt_txt).format("MMM Do YY");
+//   var dateEl = document.createElement("p");
+//   dateEl.textContent = date;
+//   //dayCard.appendChild(dateEl);
+//   //console.log(dateEl);
 
-  for (var i = 0; i <= descrip.length; i++) {
-    description = descrip[0];
-    console.log(description);
+//   for (var i = 0; i <= descrip.length; i++) {
+//     description = descrip[0];
+//     console.log(description);
 
-    icon = descrip[1];
-    console.log(icon);
-  }
-  //within the loop
-  //create a div for each day
-  //take dt and moment it into day of the week and date
-  //temperature
-  //description
-  //icon
-  //append all into the div
-};
+//     icon = descrip[1];
+//     console.log(icon);
+//   }
+//   //within the loop
+//   //create a div for each day
+//   //take dt and moment it into day of the week and date
+//   //temperature
+//   //description
+//   //icon
+//   //append all into the div
+// };
 //! call by zip code - waiting on the code from city to adapt
 var getByZip = function (event) {
   event.preventDefault();
@@ -144,8 +146,9 @@ function getLa() {
         card.appendChild(temperatureEl);
         console.log(data.main.temp);
 
-        for (var i = 0; i < 5; i++) {
-          makeCard(data.weather[i]);
+        for (var i = 0; i < data.list.length; i++) {
+          if (data.list[i].dt_txt.indexOf("12:00:00") !== -1)
+            makeCard(data.list[i]);
         }
         //!HELP - for loop or find function?
         //find
@@ -198,8 +201,9 @@ function getChi() {
         card.appendChild(temperatureEl);
         console.log(data.main.temp);
 
-        for (var i = 0; i < 5; i++) {
-          makeCard(data.weather[i]);
+        for (var i = 0; i < data.list.length; i++) {
+          if (data.list[i].dt_txt.indexOf("12:00:00") !== -1)
+            makeCard(data.list[i]);
         }
       } else {
         alert("Error 😩");
@@ -246,6 +250,14 @@ var makeCard = function (weather) {
   console.log(weather);
   //console.log(weather.weather); console log for user searching city
   //!These dates need to be moved to make card function - here as proof of concept.
+  var main = weather.weather[0].main;
+  console.log(main);
+  var descript = weather.weather[0].description;
+  console.log(descript);
+  var descripEl = document.createElement("p");
+  descripEl.textContent = descript;
+  weathercard.appendChild(descripEl);
+
   var day = moment(weather.dt_txt).format("dddd");
   var dayEl = document.createElement("p");
   dayEl.textContent = day;
