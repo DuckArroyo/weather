@@ -4,7 +4,7 @@
 
 ## Links
 
-Github Pages [Link]()
+Github Pages [Link](https://duckarroyo.github.io/challenge6/)
 
 Github Repository [Link](https://github.com/DuckArroyo/challenge6)
 
