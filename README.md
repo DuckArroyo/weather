@@ -1,16 +1,24 @@
-# Weather API ![GitHublicense](https://img.shields.io/npm/l/express?style=for-the-badge)
+# Weather dashboard
 
-## UO Coding bootcamp Challenge 6
+![GitHublicense](https://img.shields.io/npm/l/express?style=for-the-badge)
 
-## Links
+## UO Coding bootcamp Challenge
 
-Github Pages [Link](https://duckarroyo.github.io/challenge6/)
-
-Github Repository [Link](https://github.com/DuckArroyo/challenge6)
+UO Coding bootcamp Challenge 5
 
 ## Description
 
-This application fetches the weather for the searched area. 
+Weather dashboard app. Utilizes APIs to get weather information.
+
+## Links
+
+[Github Pages](https://duckarroyo.github.io/weather)
+
+[Github Repository](https://github.com/DuckArroyo/weather)
+
+## Description
+
+This application fetches the weather for the searched area.
 
 ## Project Guidelines/Requirements
 
